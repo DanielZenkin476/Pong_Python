@@ -9,7 +9,7 @@ from random import randint, uniform
 from pygame.sprite import Sprite
 from settings import *
 from sprites import *
-
+import json
 
 class Game():
     def __init__(self):
@@ -26,13 +26,17 @@ class Game():
         self.player = Player((self.all_sprites,self.paddle_sprites))
         self.ball = Ball(self.all_sprites,self.paddle_sprites)
         self.enemy = Opponent((self.all_sprites,self.paddle_sprites),self.ball)
+
+
+
         #score
-        self.score = {'player': 0,"opponent": 0,}
+        with open(join('saves','score.txt'),'r') as score_file:
+            self.score = json.load(score_file)
+        #self.score = {'player': 0,"opponent": 0,}
         self.font = pygame.font.Font('font/Oxanium-Bold.ttf', 100)
 
         self.last_hit = [0.0,0.0]
         self.hp_cooldown = 1000
-
 
     def display_score(self):
         i=100
@@ -50,10 +54,10 @@ class Game():
         score_change = self.ball.score_change
         if score_change == 1:
             if self.check_hp(0):
-                self.score['player'] = self.score['player'] + 1
+                self.score['player'] +=  1
         if score_change == -1:
             if self.check_hp(1):
-                self.score['opponent'] += self.score['opponent'] + 1
+                self.score['opponent'] +=  1
 
     def check_hp(self,i):
         cur_time = pygame.time.get_ticks()
@@ -64,7 +68,6 @@ class Game():
         else:
             return False
 
-
     def gameloop(self):
         while self.running:
             #dt calc
@@ -73,6 +76,8 @@ class Game():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                    with open(join('saves','score.txt'),'w') as score_file:
+                        json.dump(self.score,score_file)
                     pygame.quit()
             #fill screen
             self.screen.fill(COLORS['bg'])

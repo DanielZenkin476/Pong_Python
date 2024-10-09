@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb8d182a-9a14-4aef-99db-ea4bc93358bc" name="Changes" comment="added score print and check, 1 sec interval between diffrent ball mises ( so it wont go to infinity if stuck )">
+    <list default="true" id="eb8d182a-9a14-4aef-99db-ea4bc93358bc" name="Changes" comment="added display elements">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728471305209</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added display elements">
+      <option name="closed" value="true" />
+      <created>1728471589473</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1728471589473</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -136,7 +144,8 @@
     <MESSAGE value="added paddle class a &quot;master class&quot; to use inheritance for player and enemy" />
     <MESSAGE value="added enemy, follows ball, added font file" />
     <MESSAGE value="added score print and check, 1 sec interval between diffrent ball mises ( so it wont go to infinity if stuck )" />
-    <option name="LAST_COMMIT_MESSAGE" value="added score print and check, 1 sec interval between diffrent ball mises ( so it wont go to infinity if stuck )" />
+    <MESSAGE value="added display elements" />
+    <option name="LAST_COMMIT_MESSAGE" value="added display elements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -165,6 +174,16 @@
           <url>file://$PROJECT_DIR$/sprites.py</url>
           <line>89</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sprites.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
