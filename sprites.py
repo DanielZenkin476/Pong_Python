@@ -5,16 +5,16 @@ from pygame.sprite import Sprite
 from settings import *
 from random import choice
 
-class Player(Sprite):
-    def __init__(self,groups,ball_sprites):
-        super().__init__(groups)
-        self.image = pygame.Surface(SIZE['paddle'],pygame.SRCALPHA)
-        pygame.draw.rect(self.image,COLORS['paddle'], pygame.Rect((0,0),SIZE['paddle']),0,10)
-        self.rect = self.image.get_rect(center = POS['player'])
-        self.speed = SPEED['player']
-        self.direction = 0# 1 for down -1 for up
-        self.old_rect = self.rect.copy()
 
+
+class Paddle(Sprite):
+    def __init__(self,groups):
+        super().__init__(groups)
+        self.image = pygame.Surface(SIZE['paddle'], pygame.SRCALPHA)
+        pygame.draw.rect(self.image, COLORS['paddle'], pygame.Rect((0, 0), SIZE['paddle']), 0, 10)
+        self.rect = self.image.get_rect(center=POS['player'])
+        self.direction = 0  # 1 for down -1 for up
+        self.old_rect = self.rect.copy()
         self.hp = 3
 
     def coll_screen(self):
@@ -22,19 +22,26 @@ class Player(Sprite):
                 self.rect.top <= 0 and self.direction < 0):
             self.direction = 0
 
+    def move(self,dt):
+        self.rect.y += self.direction * self.speed * dt
+
     def input(self):
         keys = pygame.key.get_pressed()
         self.direction = (int(keys[pygame.K_DOWN]) - int(keys[pygame.K_UP]))  # x direction
 
-
-    def move(self,dt):
-        self.rect.y += self.direction * self.speed * dt
 
     def update(self,dt):
         self.old_rect = self.rect.copy()
         self.input()
         self.coll_screen()
         self.move(dt)
+
+class Player(Paddle):
+    def __init__(self,groups,ball_sprites):
+        super().__init__(groups)
+        self.speed = SPEED['player']
+
+
 
 class Ball(Sprite):
     def __init__(self,groups,paddle_sprites):
@@ -66,7 +73,6 @@ class Ball(Sprite):
                         self.rect.top = paddle.rect.bottom
                         self.direction.y = -self.direction.y
 
-
     def coll_screen(self):
         if (self.rect.bottom >= WINDOW_HEIGHT and self.direction.y > 0) or (
                 self.rect.top <= 0 and self.direction.y < 0):
@@ -79,7 +85,6 @@ class Ball(Sprite):
         self.collision('x')
         self.rect.y += self.direction.y * self.speed * dt
         self.collision('y')
-
 
     def update(self,dt):
         self.old_rect = self.rect.copy()
