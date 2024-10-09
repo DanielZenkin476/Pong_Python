@@ -19,11 +19,24 @@ class Game():
         self.clock = pygame.time.Clock()
         self.running = True
         self.FPS_target = 99
+        #sprites
         self.all_sprites = pygame.sprite.Group()
         self.paddle_sprites = pygame.sprite.Group()
         self.ball_sprites = pygame.sprite.Group()
-        self.player = Player((self.all_sprites,self.paddle_sprites),self.ball_sprites)
-        self.ball = Ball((self.all_sprites,self.ball_sprites),self.paddle_sprites)
+        self.player = Player((self.all_sprites,self.paddle_sprites))
+        self.ball = Ball(self.all_sprites,self.paddle_sprites)
+        self.enemy = Opponent((self.all_sprites,self.paddle_sprites),self.ball)
+        #score
+        self.score = {'player': 0,"opponent": 0,}
+
+
+    def display_score(self):
+        score_player = self.font.render('health: ' + str(self.player.hp), True, 'red')
+        hp_rect = hp_surt.get_rect(topleft=(10, 10))
+        self.screen.blit(hp_surt, hp_rect)
+        pygame.draw.rect(self.screen, 'red', hp_rect.inflate(20, 15), 5, 10)
+
+
 
 
     def gameloop(self):

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb8d182a-9a14-4aef-99db-ea4bc93358bc" name="Changes" comment="added proper collision between player and ball all directions">
+    <list default="true" id="eb8d182a-9a14-4aef-99db-ea4bc93358bc" name="Changes" comment="added paddle class a &quot;master class&quot; to use inheritance for player and enemy">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprites.py" beforeDir="false" afterPath="$PROJECT_DIR$/sprites.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,14 +104,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728468925334</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added paddle class a &quot;master class&quot; to use inheritance for player and enemy">
+      <option name="closed" value="true" />
+      <created>1728469313892</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728469313892</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added basic paddle(player ) class and a ball that bounces around" />
     <MESSAGE value="changed ball starting direction to be random" />
     <MESSAGE value="added proper collision between player and ball all directions" />
-    <option name="LAST_COMMIT_MESSAGE" value="added proper collision between player and ball all directions" />
+    <MESSAGE value="added paddle class a &quot;master class&quot; to use inheritance for player and enemy" />
+    <option name="LAST_COMMIT_MESSAGE" value="added paddle class a &quot;master class&quot; to use inheritance for player and enemy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -131,17 +142,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sprites.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sprites.py</url>
-          <line>7</line>
+          <line>38</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sprites.py</url>
-          <line>74</line>
+          <line>88</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

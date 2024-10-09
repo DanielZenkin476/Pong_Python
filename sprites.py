@@ -37,11 +37,24 @@ class Paddle(Sprite):
         self.move(dt)
 
 class Player(Paddle):
-    def __init__(self,groups,ball_sprites):
+    def __init__(self,groups):
         super().__init__(groups)
+        self.rect = self.image.get_rect(center=POS['player'])
         self.speed = SPEED['player']
 
+class Opponent(Paddle):
+    def __init__(self,groups,ball):
+        super().__init__(groups)
+        self.rect = self.image.get_rect(center=POS['opponent'])
+        self.speed = SPEED['opponent']
+        self.ball = ball
 
+    def input(self):
+        self.direction = 0
+        if self.rect.centery > self.ball.rect.centery:
+            self.direction = -1
+        if self.rect.centery < self.ball.rect.centery:
+            self.direction = 1
 
 class Ball(Sprite):
     def __init__(self,groups,paddle_sprites):
@@ -88,7 +101,8 @@ class Ball(Sprite):
 
     def update(self,dt):
         self.old_rect = self.rect.copy()
-        self.move(dt)
         self.coll_screen()
+        self.move(dt)
+
 
 
