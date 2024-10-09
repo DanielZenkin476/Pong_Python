@@ -67,6 +67,7 @@ class Ball(Sprite):
         if self.direction: self.direction.normalize()
         self.paddle_sprites = paddle_sprites
         self.old_rect = self.rect.copy()
+        self.score_change = 0
 
     def collision(self,direction):
         for paddle in self.paddle_sprites:
@@ -90,8 +91,14 @@ class Ball(Sprite):
         if (self.rect.bottom >= WINDOW_HEIGHT and self.direction.y > 0) or (
                 self.rect.top <= 0 and self.direction.y < 0):
             self.direction.y = -self.direction.y
-        if (self.rect.right >= WINDOW_WIDTH and self.direction.x > 0) or (self.rect.left <= 0 and self.direction.x < 0):
+        if (self.rect.right >= WINDOW_WIDTH and self.direction.x > 0):# -1 means point for enemy
             self.direction.x =- self.direction.x
+            self.score_change = -1
+        elif (self.rect.left <= 0 and self.direction.x < 0):# + 1 means point for player
+            self.direction.x = - self.direction.x
+            self.score_change =1
+        return 0
+
 
     def move(self,dt):
         self.rect.x += self.direction.x * self.speed * dt
@@ -100,9 +107,10 @@ class Ball(Sprite):
         self.collision('y')
 
     def update(self,dt):
+        self.score_change = 0
         self.old_rect = self.rect.copy()
-        self.coll_screen()
         self.move(dt)
+        self.coll_screen()
 
 
 
