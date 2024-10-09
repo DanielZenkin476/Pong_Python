@@ -21,8 +21,9 @@ class Game():
         self.FPS_target = 99
         self.all_sprites = pygame.sprite.Group()
         self.paddle_sprites = pygame.sprite.Group()
-        self.player = Player((self.all_sprites,self.paddle_sprites))
-        self.ball = Ball(self.all_sprites)
+        self.ball_sprites = pygame.sprite.Group()
+        self.player = Player((self.all_sprites,self.paddle_sprites),self.ball_sprites)
+        self.ball = Ball((self.all_sprites,self.ball_sprites),self.paddle_sprites)
 
 
     def gameloop(self):
