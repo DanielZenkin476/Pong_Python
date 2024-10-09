@@ -62,12 +62,28 @@ class Ball(Sprite):
         self.image = pygame.Surface(SIZE['ball'], pygame.SRCALPHA)# makes rect invisible
         pygame.draw.circle(self.image,COLORS['ball'],center = (SIZE['ball'][0]/2,SIZE['ball'][1]/2),radius = SIZE['ball'][0]/2)
         self.rect = self.image.get_rect(center = (WINDOW_WIDTH/2,WINDOW_HEIGHT/2))
-        self.speed = SPEED['ball']
+        self.speed = 0
         self.direction = pygame.Vector2(choice((1,-1)),uniform(.5,.8)* choice((1,-1)))
         if self.direction: self.direction.normalize()
         self.paddle_sprites = paddle_sprites
         self.old_rect = self.rect.copy()
         self.score_change = 0
+        self.spawn_time = pygame.time.get_ticks()
+        self.spawn_interval = 1500
+
+    def spawn_check(self):# check if firing interval has passed.
+        current_time = pygame.time.get_ticks()
+        interval = current_time - self.spawn_time
+        if interval > self.spawn_interval:
+            self.speed = SPEED['ball']
+
+    def ball_reset(self):
+        self.rect.center =pygame.Vector2(WINDOW_WIDTH/2,WINDOW_HEIGHT/2)
+        self.direction = pygame.Vector2(choice((1, -1)), uniform(.5, .8) * choice((1, -1)))
+        if self.direction: self.direction.normalize()
+        self.old_rect = self.rect.copy()
+        self.speed =0
+        self.spawn_time = pygame.time.get_ticks()
 
     def collision(self,direction):
         for paddle in self.paddle_sprites:
@@ -107,6 +123,7 @@ class Ball(Sprite):
         self.collision('y')
 
     def update(self,dt):
+        if self.speed == 0: self.spawn_check()
         self.score_change = 0
         self.old_rect = self.rect.copy()
         self.move(dt)

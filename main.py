@@ -30,9 +30,11 @@ class Game():
 
 
         #score
-        with open(join('saves','score.txt'),'r') as score_file:
-            self.score = json.load(score_file)
-        #self.score = {'player': 0,"opponent": 0,}
+        try:
+            with open(join('saves', 'score.txt'), 'r') as score_file:
+                self.score = json.load(score_file)
+        except:
+            self.score = {'player': 0,"opponent": 0,}
         self.font = pygame.font.Font('font/Oxanium-Bold.ttf', 100)
 
         self.last_hit = [0.0,0.0]
@@ -55,9 +57,11 @@ class Game():
         if score_change == 1:
             if self.check_hp(0):
                 self.score['player'] +=  1
+                self.ball.ball_reset()
         if score_change == -1:
             if self.check_hp(1):
                 self.score['opponent'] +=  1
+                self.ball.ball_reset()
 
     def check_hp(self,i):
         cur_time = pygame.time.get_ticks()
