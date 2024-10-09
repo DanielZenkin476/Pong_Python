@@ -1,8 +1,9 @@
-from random import randint
+from random import randint, uniform
 
 import pygame
 from pygame.sprite import Sprite
 from settings import *
+from random import choice
 
 class Player(Sprite):
     def __init__(self,groups):
@@ -38,7 +39,7 @@ class Ball(Sprite):
         pygame.surface.Surface.fill(self.image,COLORS['ball'])
         self.rect = self.image.get_rect(center = (WINDOW_WIDTH/2,WINDOW_HEIGHT/2))
         self.speed = SPEED['ball']
-        self.direction = pygame.Vector2(1,1)
+        self.direction = pygame.Vector2(choice((1,-1)),uniform(.5,.8)* choice((1,-1)))
         if self.direction: self.direction.normalize()
 
     def coll_screen(self):
@@ -48,10 +49,13 @@ class Ball(Sprite):
         if (self.rect.right > WINDOW_WIDTH and self.direction.x > 0) or (self.rect.left < 0 and self.direction.x < 0):
             self.direction.x =- self.direction.x
 
-
-    def update(self,dt):
+    def move(self,dt):
         self.rect.x += self.direction.x * self.speed * dt
         self.coll_screen()
         self.rect.y += self.direction.y * self.speed * dt
         self.coll_screen()
+
+
+    def update(self,dt):
+        self.move(dt)
 
