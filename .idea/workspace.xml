@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb8d182a-9a14-4aef-99db-ea4bc93358bc" name="Changes" comment="added enemy, follows ball, added font file">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="eb8d182a-9a14-4aef-99db-ea4bc93358bc" name="Changes" comment="added score print and check, 1 sec interval between diffrent ball mises ( so it wont go to infinity if stuck )">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites.py" beforeDir="false" afterPath="$PROJECT_DIR$/sprites.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728470074828</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added score print and check, 1 sec interval between diffrent ball mises ( so it wont go to infinity if stuck )">
+      <option name="closed" value="true" />
+      <created>1728471305209</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1728471305209</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -130,7 +135,8 @@
     <MESSAGE value="added proper collision between player and ball all directions" />
     <MESSAGE value="added paddle class a &quot;master class&quot; to use inheritance for player and enemy" />
     <MESSAGE value="added enemy, follows ball, added font file" />
-    <option name="LAST_COMMIT_MESSAGE" value="added enemy, follows ball, added font file" />
+    <MESSAGE value="added score print and check, 1 sec interval between diffrent ball mises ( so it wont go to infinity if stuck )" />
+    <option name="LAST_COMMIT_MESSAGE" value="added score print and check, 1 sec interval between diffrent ball mises ( so it wont go to infinity if stuck )" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
