@@ -16,6 +16,9 @@ class Paddle(Sprite):
         self.direction = 0  # 1 for down -1 for up
         self.old_rect = self.rect.copy()
         self.hp = 3
+        #shadow image
+        self.shadow_image = self.image.copy()
+        pygame.draw.rect(self.shadow_image, COLORS['paddle shadow'], pygame.Rect((0, 0), SIZE['paddle']), 0, 10)
 
     def coll_screen(self):
         if (self.rect.bottom >= WINDOW_HEIGHT and self.direction > 0) or (
@@ -62,12 +65,19 @@ class Ball(Sprite):
         self.image = pygame.Surface(SIZE['ball'], pygame.SRCALPHA)# makes rect invisible
         pygame.draw.circle(self.image,COLORS['ball'],center = (SIZE['ball'][0]/2,SIZE['ball'][1]/2),radius = SIZE['ball'][0]/2)
         self.rect = self.image.get_rect(center = (WINDOW_WIDTH/2,WINDOW_HEIGHT/2))
+        #shadow surface
+        self.shadow_image = self.image.copy()
+        pygame.draw.circle(self.shadow_image,COLORS['ball shadow'],center = (SIZE['ball'][0]/2,SIZE['ball'][1]/2),radius = SIZE['ball'][0]/2)
+
         self.speed = 0
         self.direction = pygame.Vector2(choice((1,-1)),uniform(.5,.8)* choice((1,-1)))
         if self.direction: self.direction.normalize()
+
         self.paddle_sprites = paddle_sprites
+
         self.old_rect = self.rect.copy()
         self.score_change = 0
+
         self.spawn_time = pygame.time.get_ticks()
         self.spawn_interval = 1500
 

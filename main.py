@@ -10,6 +10,8 @@ from pygame.sprite import Sprite
 from settings import *
 from sprites import *
 import json
+from groups import *
+from os.path import join
 
 class Game():
     def __init__(self):
@@ -20,9 +22,9 @@ class Game():
         self.running = True
         self.FPS_target = 99
         #sprites
-        self.all_sprites = pygame.sprite.Group()
-        self.paddle_sprites = pygame.sprite.Group()
-        self.ball_sprites = pygame.sprite.Group()
+        self.all_sprites = Allsprites()
+        self.paddle_sprites = Allsprites()
+        self.ball_sprites = Allsprites()
         self.player = Player((self.all_sprites,self.paddle_sprites))
         self.ball = Ball(self.all_sprites,self.paddle_sprites)
         self.enemy = Opponent((self.all_sprites,self.paddle_sprites),self.ball)
@@ -52,6 +54,8 @@ class Game():
         pygame.draw.line(self.screen, 'white', (WINDOW_WIDTH / 2, 0), (WINDOW_WIDTH / 2, WINDOW_HEIGHT), 5 )
         pygame.draw.circle(self.screen,'white', (WINDOW_WIDTH/2,WINDOW_HEIGHT/2),30 )
         pygame.draw.circle(self.screen, COLORS['bg'], (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), 15)
+        lst = [1,2,3,4]
+        lst.pop(2)
 
     def update_score(self):
         score_change = self.ball.score_change
@@ -91,7 +95,7 @@ class Game():
             self.update_score()
 
             self.display_score()
-            self.all_sprites.draw(self.screen)
+            self.all_sprites.draw()
 
             pygame.display.update()
         pygame.quit()
