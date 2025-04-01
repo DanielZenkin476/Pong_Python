@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb8d182a-9a14-4aef-99db-ea4bc93358bc" name="Changes" comment="added comments to sprites.py">
-      <change beforePath="$PROJECT_DIR$/groups.py" beforeDir="false" afterPath="$PROJECT_DIR$/groups.py" afterDir="false" />
-    </list>
+    <list default="true" id="eb8d182a-9a14-4aef-99db-ea4bc93358bc" name="Changes" comment="added comment to groups file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743543828835</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added comment to groups file">
+      <option name="closed" value="true" />
+      <created>1743543929816</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1743543929816</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -213,7 +219,8 @@
     <MESSAGE value="added shadows to game" />
     <MESSAGE value="added a few comments, removed 2 lines from main.py line 61 62" />
     <MESSAGE value="added comments to sprites.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="added comments to sprites.py" />
+    <MESSAGE value="added comment to groups file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added comment to groups file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
