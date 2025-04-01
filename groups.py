@@ -2,7 +2,7 @@ import pygame
 
 from settings import *
 from sprites import Player
-
+# group file for custom sprite.Group class Allsprites
 
 class Allsprites(pygame.sprite.Group):
     def __init__(self):
