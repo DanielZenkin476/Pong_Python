@@ -59,8 +59,8 @@ class Game():
         pygame.draw.circle(self.screen,'white', (WINDOW_WIDTH/2,WINDOW_HEIGHT/2),30 )
         pygame.draw.circle(self.screen, COLORS['bg'], (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), 15)
 
-
     def update_score(self):
+        # function to check for score changes
         score_change = self.ball.score_change
         if score_change == 1:
             if self.check_hp(0):
@@ -72,6 +72,7 @@ class Game():
                 self.ball.ball_reset()
 
     def check_hp(self,i):
+        # check for hp cooldown - if player can be hit again
         cur_time = pygame.time.get_ticks()
         interval = cur_time - self.last_hit[i]
         if interval > self.hp_cooldown:
@@ -81,6 +82,7 @@ class Game():
             return False
 
     def gameloop(self):
+        # game loop itself
         while self.running:
             #dt calc
             dt = self.clock.tick(self.FPS_target) /1000
@@ -88,15 +90,16 @@ class Game():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                    # save current score
                     with open(join('saves','score.txt'),'w') as score_file:
                         json.dump(self.score,score_file)
                     pygame.quit()
             #fill screen
             self.screen.fill(COLORS['bg'])
-
+            #updates per frame
             self.all_sprites.update(dt)
             self.update_score()
-
+            # displays:
             self.display_score()
             self.all_sprites.draw()
 
