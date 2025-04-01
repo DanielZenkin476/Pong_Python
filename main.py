@@ -1,5 +1,6 @@
 #this project uses files by CodeClear - https://github.com/clear-code-projects/5games
-
+#Implemintation of  Pong  in Python using Pygame
+# game will take a few seconds to load depending on hardware
 import random
 import pygame
 from Tools.scripts.dutree import display
@@ -12,26 +13,26 @@ from sprites import *
 import json
 from groups import *
 from os.path import join
-
+#base class Game will hold all objects
 class Game():
+
     def __init__(self):
+        # Game initialization
         pygame.init()
-        self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+        self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT)) # width and height taken from settings file
         pygame.display.set_caption("Pong")
-        self.clock = pygame.time.Clock()
-        self.running = True
-        self.FPS_target = 99
+        self.clock = pygame.time.Clock() # create clock
+        self.running = True # game state
+        self.FPS_target = 99 # Fps target = based on screen
         #sprites
-        self.all_sprites = Allsprites()
-        self.paddle_sprites = Allsprites()
-        self.ball_sprites = Allsprites()
+        self.all_sprites = Allsprites() # group to hold all sprites
+        self.paddle_sprites = Allsprites() # group to hold paddles (player and cpu
+        self.ball_sprites = Allsprites() # ball sprites group
         self.player = Player((self.all_sprites,self.paddle_sprites))
         self.ball = Ball(self.all_sprites,self.paddle_sprites)
         self.enemy = Opponent((self.all_sprites,self.paddle_sprites),self.ball)
-
-
-
         #score
+        # try block for reading " save file "
         try:
             with open(join('saves', 'score.txt'), 'r') as score_file:
                 self.score = json.load(score_file)
@@ -43,19 +44,21 @@ class Game():
         self.hp_cooldown = 1000
 
     def display_score(self):
-        i=100
+        # dunction to display current score and line seperator in center of screen
+
+        i=100 # i used for spacing
+        # draw score itself:
         for key in self.score.keys():
             score_player = self.font.render(str(self.score[key]), True, 'white')
             score_rect = score_player.get_rect(center=(WINDOW_WIDTH / 2 +i, WINDOW_HEIGHT / 2))
             self.screen.blit(score_player, score_rect)
             i =-100
 
-        #line seperator
+        #draw line seperator in the center of field
         pygame.draw.line(self.screen, 'white', (WINDOW_WIDTH / 2, 0), (WINDOW_WIDTH / 2, WINDOW_HEIGHT), 5 )
         pygame.draw.circle(self.screen,'white', (WINDOW_WIDTH/2,WINDOW_HEIGHT/2),30 )
         pygame.draw.circle(self.screen, COLORS['bg'], (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), 15)
-        lst = [1,2,3,4]
-        lst.pop(2)
+
 
     def update_score(self):
         score_change = self.ball.score_change
